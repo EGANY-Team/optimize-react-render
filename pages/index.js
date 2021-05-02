@@ -1,4 +1,4 @@
-import { useCallback } from 'react'
+import { useState } from 'react'
 import {
   Wrapper,
   Heading,
@@ -9,14 +9,39 @@ import {
 } from '../components'
 
 export default function Home() {
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+
+  const handleNameChange = (ev) => {
+    setName(ev.target.value)
+  }
+
+  const handleEmailChange = (ev) => {
+    setEmail(ev.target.value)
+  }
+
   return (
     <Wrapper>
       <Heading>Optimze React Render</Heading>
       <StyledForm>
-        <StyledLabel htmlFor="name">Tên</StyledLabel>
-        <StyledInput type="text" id="name" name="name" />
-        <StyledLabel htmlFor="age">Tuổi</StyledLabel>
-        <StyledInput type="number" id="age" name="age" />
+        <StyledLabel htmlFor="name">Họ và tên</StyledLabel>
+        <StyledInput
+          type="text"
+          id="name"
+          name="name"
+          placeholder="Tommy Teo"
+          value={name}
+          onChange={handleNameChange}
+        />
+        <StyledLabel htmlFor="email">Email</StyledLabel>
+        <StyledInput
+          type="email"
+          id="email"
+          name="email"
+          placeholder="tommyteo@trungtambangdialauhaingoai.vjp"
+          value={email}
+          onChange={handleEmailChange}
+        />
         <StyledButton>Đăng ký</StyledButton>
       </StyledForm>
     </Wrapper>
