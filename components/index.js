@@ -1,3 +1,5 @@
+import { memo } from 'react'
+
 export function Wrapper({ children }) {
   return (
     <div className="vw-100 vh-100 bg-black-20 flex flex-column justify-center items-center sans-serif">
@@ -6,9 +8,9 @@ export function Wrapper({ children }) {
   )
 }
 
-export function Heading({ children }) {
+export const Heading = memo(function Heading({ children }) {
   return <h1 className="green">{children}</h1>
-}
+})
 
 export function StyledForm({ children, onSubmit }) {
   return (
@@ -21,15 +23,15 @@ export function StyledForm({ children, onSubmit }) {
   )
 }
 
-export function StyledLabel({ htmlFor, children }) {
+export const StyledLabel = memo(function StyledLabel({ htmlFor, children }) {
   return (
     <label className="db bold mb1" htmlFor={htmlFor}>
       {children}
     </label>
   )
-}
+})
 
-export function StyledInput({
+export const StyledInput = memo(function StyledInput({
   type = 'text',
   id,
   name,
@@ -40,6 +42,7 @@ export function StyledInput({
   return (
     <input
       className="input-reset db w-100 pa2 ba b--black-10 br1 mb3"
+      autoComplete="off"
       type={type}
       id={id}
       name={name}
@@ -48,9 +51,12 @@ export function StyledInput({
       onChange={onChange}
     />
   )
-}
-
-export function StyledButton({ type = 'button', children, onClick }) {
+})
+export const StyledButton = memo(function StyledButton({
+  type = 'button',
+  children,
+  onClick,
+}) {
   return (
     <button
       className="button-reset w-100 tc bg-green white bold pointer dim bn br1 pa2 mt4"
@@ -60,4 +66,4 @@ export function StyledButton({ type = 'button', children, onClick }) {
       {children}
     </button>
   )
-}
+})

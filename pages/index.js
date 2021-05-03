@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useCallback, useState } from 'react'
 import {
   Wrapper,
   Heading,
@@ -12,13 +12,13 @@ export default function Home() {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
 
-  const handleNameChange = (ev) => {
+  const handleNameChange = useCallback((ev) => {
     setName(ev.target.value)
-  }
+  }, [])
 
-  const handleEmailChange = (ev) => {
+  const handleEmailChange = useCallback((ev) => {
     setEmail(ev.target.value)
-  }
+  }, [])
 
   return (
     <Wrapper>
